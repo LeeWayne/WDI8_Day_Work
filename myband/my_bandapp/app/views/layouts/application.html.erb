@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyBandapp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <h1>Foo Fighters</h1>
+
+  <li><a href="/">Home</a></li>
+  <li><a href="/bandmembers">Band Members</a></li>
+  <li><a href="/tourdates">Tour Dates</a></li>
+  <li><a href="/images">Images</a></li>
+</header>
+
+<%= yield %>
+
+</body>
+</html>

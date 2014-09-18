@@ -1,0 +1,22 @@
+<% title "Ingredient" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ingredient.name %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= @ingredient.image %>
+</p>
+<p>
+  <strong>Recipes:</strong><br>
+  <% @ingredient.recipes.each do |recipe| %>
+    <%= recipe.name %><br>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_ingredient_path(@ingredient) %> |
+  <%= link_to "Destroy", @ingredient, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", ingredients_path %>
+</p>

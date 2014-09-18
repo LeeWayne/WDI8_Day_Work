@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: mailer_app_dev
+  pool: 5
+  username:
+  password:
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: mailer_app_test
+  pool: 5
+  username:
+  password: 
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: mailer_app
+  username: 
+  password: 
+  pool: 5
+  timeout: 5000

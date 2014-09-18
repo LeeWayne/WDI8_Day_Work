@@ -1,0 +1,39 @@
+body {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: sans-serif;
+}
+
+#quote_container {
+  display:none;
+}
+
+.quote {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.about {
+  font-size: 80%;
+}
+
+form {
+  border-top: 1px solid #777;
+  padding-top: 0.3em;
+}
+
+#updatemessage {
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 20px;
+  border: 1px solid #aa3;
+  padding: 5px;
+  padding-left: 25px;
+  background: url('1-1.gif') 5px 5px no-repeat;
+  background-color: #ee9;
+}
+
+.hidden {
+  display: none;
+}

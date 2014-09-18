@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Blog</a>
+        <ul class="nav">
+          <li><%= link_to 'All posts', posts_path %></li>
+          <li><%= link_to 'New post', new_post_path %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="span7">
+        <%= yield %>
+      </div>
+
+      <div class="span5">
+        <div class="well">
+          <h4>My blog about things</h4>
+          <p>Welcome to my blog. There are <%= pluralize total_posts, 'post' %> in total.</p>
+
+          <h5>Other things that I like</h5>
+          <ul>
+            <li>Dogs</li>
+            <li>Typography</li>
+            <li>Sausages</li>
+            <li><%= link_to 'Nick Drake', 'http://www.youtube.com/watch?v=9aCxv9Curo4' %></li>
+            <li>Countryside</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="span12 footer">
+        <p class="muted">&copy; 2013 Every Depressing LiveJournal Ever
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

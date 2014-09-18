@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookbook</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav>
+    <%= link_to "all recipes", recipes_path %>
+    <%= link_to "all categories", categories_path %>
+
+  </nav>
+
+  <p><%= "".blank? %></p>
+  <p><%= "".nil? %></p>
+  <p><%= "".empty? %></p>
+
+  <p><%= ["Emma", "Aknur", "Sheryar"].to_sentence %></p>
+
+    <p><%= pluralize(2, "person") %></p>
+
+    <p><%= number_to_currency(300, unit: "£", seporator: ".") %></p>
+
+    <p><%= number_to_human(1234534576) %></p>
+    <p><%= number_to_human_size(1234534576) %></p>
+    
+    <p>DateHelpers:</p>
+    <% from_time = Time.now
+      to_time1 = Time.now - 4.years - 19.days - 20.minutes 
+      to_time2 = Time.now - 23.minutes - 5.seconds %>
+    <p><%= distance_of_time_in_words(from_time, to_time1)%></p>
+    <p><%= distance_of_time_in_words(from_time, to_time2)%></p>
+    <p><%= distance_of_time_in_words(from_time, to_time2, include_seconds: true)%></p>
+    <p><%= distance_of_time_in_words(Time.now, Time.now + 5.seconds, include_seconds: true )%></p>
+
+    <p>This was posted <%= time_ago_in_words(from_time - 2.years)%> ago!</p>
+
+    <%= form_tag('/') do %>
+      <div><%= text_field_tag 'ip', '0.0.0.0', :maxlength => 15, :size => 20, :class => "ip-input" %></div>
+      
+      <div>
+      <%= check_box_tag(:pet_dog) %>
+      <%= label_tag(:pet_dog, "I own a dog") %>
+      <%= check_box_tag(:pet_cat) %>
+      <%= label_tag(:pet_cat, "I own a cat") %>
+      </div>
+      <div>
+      <%= radio_button_tag(:age, "child") %>
+      <%= label_tag(:age_child, "I am younger than 21") %>
+      <%= radio_button_tag(:age, "adult") %>
+      <%= label_tag(:age_adult, "I'm over 21") %>
+      </div>    
+      <div><%= submit_tag 'Save' %></div>
+    <% end %>
+
+    <%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+    <% end %>
+
+    
+
+
+
+
+<%= yield %>
+
+</body>
+</html>

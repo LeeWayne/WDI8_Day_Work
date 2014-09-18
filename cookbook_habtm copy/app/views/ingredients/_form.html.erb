@@ -1,0 +1,19 @@
+<%= form_for @ingredient do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </p>
+  <p>
+     <% Recipe.all.each do |recipe| %>
+       <%= check_box_tag "ingredient[recipe_ids][]", recipe.id, @ingredient.recipes.include?(recipe), id: "ingredient_recipe_ids_#{recipe.id}" %>
+       <%= f.label :recipe_ids, recipe.name, for: "ingredient_recipe_ids_#{recipe.id}" %>
+       <br>
+     <% end %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

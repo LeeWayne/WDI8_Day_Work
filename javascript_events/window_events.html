@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <title>Document / Window Events</title>
+  <head>
+    <style>
+      #scroller{ background-color: black; width: 100%; height: 10000px;}
+    </style>
+  </head>
+  <body>
+    <div id="scroller"></div>
+
+    <script type="text/javascript">
+
+      window.onresize = function(e) {
+        var w = window,
+            d = document,
+            e = d.documentElement,
+            g = d.getElementsByTagName('body')[0],
+            x = w.innerWidth || e.clientWidth || g.clientWidth,
+            y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+        console.log("window: w: " + x + " h: " + y);
+      };
+
+      window.onscroll = function scroll(e) {
+        console.log("scroll event detected! " + window.pageXOffset + " " + window.pageYOffset);
+        // Note: you can use window.innerWidth and window.innerHeight to access the width and height of the viewing area
+
+        var latters = 'ABCDEF1234567890'.split("");
+        var color = '#';
+        for (var i=0; i < 6; i++) {
+          color+=latters[Math.floor(Math.random() * 16)];
+        };
+
+        document.getElementById("scroller").style.background = color;
+        console.log(color);
+      };
+      
+    </script>
+  </body>
+</html>

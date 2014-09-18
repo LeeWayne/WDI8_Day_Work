@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <title>Mouse Events</title>
+  <head>
+    <style>
+      #mouseHover{width: 500px;height:500px;background-color: red}
+    </style>
+  </head>
+  <body>
+    <img src="http://fillmurray.com/200/301" onmouseover="this.setAttribute('src', 'http://fillmurray.com/200/300')" onmouseout="this.setAttribute('src', 'http://fillmurray.com/200/301')" width="200" />
+    <div id="mouseHover"></div>
+    
+    <script type="text/javascript">
+
+      document.getElementById("mouseHover").addEventListener("mouseover", function(e) {
+        this.addEventListener("mousemove", function(e) {
+          console.log(e.pageX, e.pageY, (e.pageY/500))
+          this.style.opacity = (e.pageY/500);
+          this.style.filter  = 'alpha(opacity=' + (e.pageY/500) + ')'; 
+        });
+      });
+
+      document.getElementById("mouseHover").addEventListener("mouseout", function(e) {
+        console.log("you've left the element");
+      });
+
+    </script>
+  </body>
+</html>

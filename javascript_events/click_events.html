@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <title>Click Events</title>
+  <head></head>
+  <body>
+    <button onclick="alert('Hello WDI!');">I'm an inline button!</button>
+    <button id="event_click">click</button>
+    <button id="event_dblclick">dblclick</button>
+    <button id="event_mousedown_mouseup">Mousedown Mouseup</button>
+    <button id="add_element">Add</button>
+
+    <script type="text/javascript">
+
+    document.getElementById("event_click").addEventListener("click", function(e) {alert("I've been clicked");
+  });
+     document.getElementById("event_dblclick").addEventListener("dblclick", function(e) {alert("I've been double clicked");
+  });
+     document.getElementById("add_element").addEventListener("click", function(e) {
+        var b = document.createElement("button");
+        var btext = document.createTextNode("Added Live");
+        b.appendChild(btext);
+        b.id = 'live_added';
+        document.body.appendChild(b);
+
+        document.getElementById("live_added").addEventListener("click", function(e) {
+          alert("I've been clicked and I've been dynamically addded! ")
+    });
+
+      });
+      document.getElementById("event_mousedown_mouseup").addEventListener("mouseup", function(e) {console.log("Mouseup");
+  });
+       document.getElementById("event_mousedown_mouseup").addEventListener("mousedown", function(e) {console.log("Mousedown");
+  });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+﻿# Overview
+==========
+Write a command line calculator application
+
+## Tasks
+========
+1) ask the user for the two numbers to operate on
+
+2) need to work out what to do with the two numbers the user has supplied, depending on what operation they chose
+  - Functionality for 'subtraction'
+  - Functionality for 'multiplication'
+  - Functionality for 'division'
+  - Functionality for 'addition'
+
+3)  need to implement advanced calculations
+  - functionality for 'power'
+  - functionality for 'square root'
+
+4) hint: this most likely will come up, your result will flash and disappear followed by the menu, you would need to delay sending the user back to the menu so they have a chance to read the result
+  
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  members: 1
+  genre: MyString
+  popular_song: MyString
+
+two:
+  name: MyString
+  members: 1
+  genre: MyString
+  popular_song: MyString

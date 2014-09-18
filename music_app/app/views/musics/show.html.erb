@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @music.name %>
+</p>
+
+<p>
+  <b>Members:</b>
+  <%= @music.members %>
+</p>
+
+<p>
+  <b>Genre:</b>
+  <%= @music.genre %>
+</p>
+
+<p>
+  <b>Popular song:</b>
+  <%= @music.popular_song %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @music.music_image.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_music_path(@music) %> |
+<%= link_to 'Back', musics_path %>

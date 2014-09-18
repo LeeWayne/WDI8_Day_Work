@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <title>Key Events</title>
+  <head></head>
+  <body>
+    <input id="key_event">
+    <script type="text/javascript">
+
+      document.getElementById("key_event").onkeypress = function(e) {
+        console.log("keypressed!");
+      };
+
+      document.getElementById("key_event").addEventListener("keydown", function(e) {
+        console.log("keydown!");
+      });
+
+      document.getElementById("key_event").addEventListener("keyup", function(e) {
+        console.log("keyup!");
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+  <html>
+  <head>
+    <style>
+      /* stuff that happens if JS is enabled (ie. _don't_ show the "you've not got js" warning) */
+      .nojs_warning {
+        display: none;
+      }
+
+      
+      /* stuff that happens if JS is disabled (ie. show the "you've not got js" warning, and hide all the buttons that have js events) */
+      .nojs button {
+        display: none;  
+      }
+      .nojs .nojs_warning {
+        display: block;
+      }
+
+     
+      .hidden {
+        display: none;
+      }
+
+      .message {
+        background-color: #aaf;
+        border: 1px solid blue;
+        border-radius: 5px;
+        padding: 10px;
+        line-height: 2;
+      }
+
+    </style>
+  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   
+    <script>
+
+      var myApp = myApp || {}; 
+    
+      myApp.sayHello = function () { 
+        // alert('Hello WDI!'); 
+        var $message = $('.message').first();
+        $message.slideToggle();
+      }
+  
+      myApp.setup = function () {
+      // var helloButton = document.getElementById('helloButton');
+      // the above has been refacted for the below part
+      var $helloButton = $('#helloButton');
+        // helloButton.addEventListener('click', myApp.sayHello); this one is the same as below
+        $helloButton.on("click", myApp.sayHello);
+      
+        var $body = $('#body');
+        // var body = document.getElementById('body');  same as above
+        
+        $body.removeClass("nojs");
+        // body.className = body.className.replace(/nojs/, ''); as above
+      }
+    
+      // document.addEventListener('DOMContentLoaded', myApp.setup);
+      // below part does the same as the commented out part.
+
+      $(document).ready(myApp.setup);
+
+    </script>
+  </head>
+  <body class="nojs" id="body">
+    <button id="helloButton">I'm a button with JS event!</button>
+    <p class="nojs_warning">You need JS to view this site best...</p>
+    <p class="hidden message">You just clicked my button</p>
+    <ul>
+      <li class="list-item"><a href="#">one</a></li>
+      <li class="list-item"><a href="#">two</a></li>
+      <li class="list-item"><a href="#">three</a></li>
+    </ul>
+  </body>
+  </html>

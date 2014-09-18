@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>The stock quote generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+    <script src="application.js"></script>
+  </head>
+  <body>
+    <%= yield %>
+  <form action="/" method="POST">
+    <label for="symbol_input">Stock Symbol</label>
+    <input type="text" id="symbol_input" name="symbol" placeholder="eg. AAPL" />
+    <input type="submit" value="Query" />
+  </form>
+
+  <p id="loading">Buffering...</p>
+
+  </body>
+</html>
