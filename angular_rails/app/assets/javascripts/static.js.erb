@@ -1,0 +1,71 @@
+#= depend_on_asset 'new_stall_form.html'
+(function() {  
+  
+  var app = angular.module('leatherLaneMarketApp', ['ngAnimate']); 
+
+  app.directive('stallForm', function(){
+      return {
+        restrict: 'A',
+        templateUrl: "<%= asset_path('new-stall-form.html') %>"
+      }
+    }); 
+
+  app.controller('MarketController',['$scope', '$html', function($scope, $http) {
+    $scope.stalls = [];  
+
+    $http.get('/stalls.json').success(function(data){
+      console.log(data)
+      $scope.stalls = data;
+    });
+    
+    $scope.selectStall = function(stall) {  
+      $scope.selectedStall = stall;  
+    }  
+
+    $scope.clearSelectedStall = function()  {
+      console.log("here")
+      $scope.selectedStall = false
+    }  
+
+    $scope.addStall = function(newStall) {  
+      $scope.stalls.push($scope.newStall); 
+      // ajax:
+      $http.post('/stalls.json', { stall: newStall} ).success(function(data){
+        $scope.stalls.push(data);
+        $scope.newStall = false;   
+        $scope.stallForm.$setPristine();
+      });   
+    }  
+
+    $scope.deleteStall = function(stall){
+      $http.delete('/stalls/' + stall.id + '.json').success(function(){
+        var index = $scope.stalls.indexOf(stall);
+        $scope.stalls.splice(index, 1);
+        $scope.selectedStall = false;
+      });
+    }
+
+    $scope.setEditStall = function(stall){
+      $scope.editStall = stall;
+    }
+
+    $scope.updateStall = function(stallToUpdate){
+
+      var ajaxForRails = {};
+      ajaxForRails.name = stallToUpdate.name;
+      ajaxForRails.price = stallToUpdate.price;
+      ajaxForRails.description = stallToUpdate.description;
+        $http.put('/stalls/' + stallToUpdate.id + '.json', { stall: ajaxForRails} ).success(function(data){
+            $scope.editStall = false;
+            console.log($scope.stalls);
+            var index = $scope.stalls.indexOf(stallToUpdate);
+            $scope.stalls.splice(index, 1);
+            $scope.stalls.push(data);
+
+        });
+    }
+
+  }]);   
+
+})();
+

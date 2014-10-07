@@ -1,0 +1,27 @@
+<h1>Listing stalls</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stalls.each do |stall| %>
+  <tr>
+    <td><%= stall.name %></td>
+    <td><%= stall.description %></td>
+    <td><%= stall.price %></td>
+    <td><%= link_to 'Show', stall %></td>
+    <td><%= link_to 'Edit', edit_stall_path(stall) %></td>
+    <td><%= link_to 'Destroy', stall, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stall', new_stall_path %>

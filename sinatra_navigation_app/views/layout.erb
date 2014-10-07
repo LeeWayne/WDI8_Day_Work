@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Sinatra Navigation App</title>
+</head>
+<body>
+  <nav>
+   <a href="/">HOME</a>
+   <a href="/gossip">GOSSIP</a>
+   <a href="/sport">SPORT</a>
+   <a href="/weather">WEATHER</a>
+   <a href="/about">ABOUT</a>
+  </nav> 
+  <form action="/navigate" method="post">
+    <input type="text" name="destination">
+    <button>Navigate</button>
+  </form>     
+  <% if @error %>
+  <p><%= @error %></p>  
+  <% end %>  
+    <%= yield %>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<form name="stallForm" ng-submit="stallForm.$valid && addStall(newStall)">
+  <div class="warning-number">Price must be beween 1 and 10</div>
+  <label>Name</label>  
+  <input type="text" ng-model="newStall.name" required/><br>  
+  <label>Price</label>  
+  <input type="number" ng-model="newStall.price" min="1" max="10" required/><br>  
+  <label>Description</label>  
+  <textarea ng-model="newStall.description"></textarea><br>  
+  <button>Submit</button>  
+</form>  

@@ -1,0 +1,197 @@
+*{
+  box-sizing: border-box;
+  font-family: Verdana;
+}
+
+body {
+  padding: 20px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 16px;
+}
+nav {
+  border: 1px solid black;
+  width: 300px;
+  border-radius: 5px;
+  padding: 10px 40px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  background: #dbf970;
+}
+
+ul {
+  width: 220px;
+  list-style: none;
+  padding: 0px;
+  margin: 5px;
+}
+
+li {
+  transition: 0.2s all ;
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: 30px;
+
+}
+
+li:hover {
+  background: gray;
+  cursor: pointer;
+}
+form{
+  padding: 5px;
+  border-radius: 5px;
+}
+input , textarea{
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.new_item {
+  border-top: 1px dotted red;
+  border-radius: 0px;
+}
+textarea {
+  vertical-align: top;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+  margin: 5px 0;
+  cursor: pointer;
+}
+section button {
+  width: 200px;
+}
+
+section {
+  position: relative;
+}
+
+section > div {
+  width: 25px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+section div img {
+  width: 100%;
+  cursor: pointer;
+}
+
+
+label {
+  width: 220px;
+  display: inline-block;
+  text-align: left;
+  margin: 0 5px;
+}
+ section {
+  background: #63add0;
+  border: 1px solid black;
+  width: 500px;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+}
+
+aside {
+  /*width: 300px;*/
+}
+
+td:first-child{
+  text-align: right;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.highlighted {
+  background: #ff7373;
+}
+li.highlighted:hover {
+ background: #ff7373; 
+}
+
+li.ng-enter, 
+li.ng-leave
+{ 
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+} 
+
+li.ng-leave.ng-leave-active,
+li.ng-enter {
+  opacity: 0;
+    top: -50px;
+    height: 0px;
+ 
+}
+
+li.ng-enter.ng-enter-active, 
+li.ng-leave {
+   opacity: 1;
+    top: 0;
+    height: 30px;
+ 
+}
+
+.close {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  text-decoration: none;
+}
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  cursor: pointer;
+}
+
+
+  /*Uncoment this section when doing form validation*/
+form input.ng-valid.ng-dirty {
+      background: #78FA89;
+    }
+form input.ng-invalid.ng-dirty {
+      background: #ff7373;
+    }
+
+form.ng-valid.ng-dirty {
+      border: 2px solid green;
+    }
+form.ng-invalid.ng-dirty {
+      border: 2px solid #ff7373;
+    }
+
+.warning-number {
+  height: 0;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.ng-invalid-max .warning-number ,.ng-invalid-min .warning-number{
+  height: 40px;
+  opacity: 1;
+}
+

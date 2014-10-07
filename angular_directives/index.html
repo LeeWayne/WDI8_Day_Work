@@ -1,0 +1,86 @@
+<html ng-app="leatherLaneMarketApp">   
+<head>
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
+  <script type="text/javascript" src="JS/app.js"></script>
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <!-- <script src="http://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script> -->
+  <!-- <script type="text/javascript" src="JS/angular-google-maps.js"></script> -->
+  <script type="text/javascript" src='JS/ui-bootstrap-tpls-0.11.2.min.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <h1>Angular Leather Lane Market App</h1>
+  
+  <div ng-controller="MarketController as market">  
+    <nav>  
+      <h2>Stalls</h2>  
+      <input ng-model="search" placeholder="search" />
+      <accordion>
+        <accordion-group ng-repeat='stall in stalls' heading='{{ stall.name }}'>{{ stall.description }}
+        </accordion-group>
+      </accordion>  
+      <ul>  
+         <li ng-repeat="stall in stalls | filter : {name: search} | orderBy: 'name'" ng-click="selectStall(stall)" ng-class="{highlighted: stall === selectedStall }">{{ stall.name}}</li> 
+
+         <li class="new_item" ng-show="newStall" ng-click="selectStall(newStall)" ng-class="{highlighted: newStall === selectedStall }">  
+        {{ newStall.name}}</li>  
+      </ul>  
+
+      <div ng-include="'shared/new_stall_form.html'"></div>
+
+      <!-- <stall-form></stall-form>from the app.directive in app.js  -->
+
+    </nav> 
+
+    <section ng-show="selectedStall"> 
+      <div ng-click="clearSelectedStall()">
+        <img src="http://www.sirrahmj.co.uk/close.png" /> 
+      </div>
+
+      <h2>Selected Stall details</h2>   
+      <table>  
+        <tr>   
+          <td>Name:</td>  
+          <td>{{ selectedStall.name }}</td>   
+        </tr>  
+        <tr>  
+          <td>Price:</td>  
+          <td> {{ selectedStall.price}}</td>   
+        </tr>  
+        <tr>  
+          <td>Description:</td>  
+          <td> {{ selectedStall.description}}</td>  
+        </tr>  
+      </table>
+
+    </section>  
+
+    <section ng-hide="selectedStall"> 
+      <h2 >Leather Lane</h2>  
+      <p>Leather Lane is an awesome market in leather lane that has a wide variety of lunch options.  Select an option from the left to see more details.</p>  
+    </section>  
+
+    <ninja></ninja>
+
+    <div enter>i am a div</div>
+
+    <datepicker ng-model='datePicker'></datepicker>
+
+    <p>{{ datePicker }}</p>
+
+    <map style="display:block;height:300px" center='clerkenwell'>
+        <!-- <marker position='EC1R 5EN'></marker> -->
+        <marker ng-repeat="marker in mapMarkers" position='{{marker}}'></marker>
+    </map>
+
+    <!-- <google-map center="map.center" zoom="map.zoom"></google-map> -->
+
+</body>
+</html>
+
+
+
+

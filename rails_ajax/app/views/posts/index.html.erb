@@ -1,0 +1,49 @@
+<h1>AJAX Blog</h1>
+
+<div id="new_post" style="display: none">
+  <%= form_tag "", id: "post_form" do |f| %>
+    <%= hidden_field_tag :id %>
+    <div class="field">
+      <%= label_tag :title %><br />
+      <%= text_field_tag :title %>
+    </div>
+    <div class="field">
+      <%= label_tag :description %><br />
+      <%= text_field_tag :description %>
+    </div>
+    <div class="field">
+      <%= label_tag :author %><br />
+      <%= text_field_tag :author %>
+    </div>
+    <div class="field">
+      <%= label_tag :twitter %><br />
+      <%= text_field_tag :twitter %>
+    </div>
+    <div class="field">
+      <%= label_tag :published_at %><br />
+      <%= text_field_tag :published_at %>
+    </div>
+    <div class="actions">
+      <%= submit_tag %>
+    </div>
+  <% end %>
+
+</div>
+
+<div id="all_posts">
+  <table class="table table-stripped table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Twitter</th>
+        <th>Published at</th>
+        <th><b>Actions</b></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>

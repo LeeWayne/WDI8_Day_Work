@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Intro</title>
+  <script type="text/javascript" src='/js/angular.js'></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
+  <script type="text/javascript" src='/js/app.js'></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body ng-app='leatherLaneMarketApp'>
+
+<h1>Leather Lane Market</h1>
+
+<div ng-controller="MarketController">
+
+  <nav>
+    <h2>Stalls</h2>
+
+    <input placeholder='Search' ng-model='search'/>
+
+    <ul>
+      <li ng-class='{highlighted: stall === selectedStall}' ng-repeat="stall in stalls | filter: {name: search} | orderBy: 'name'" ng-click="selectStall(stall)">
+        {{ stall.name }}
+      </li>
+
+    <!--   <li class='new_item' ng-show='newStall' ng-click='selectStall(newStall)' ng-class='{highlighted: newStall === selectedStall}'>
+        {{ newStall.name }}
+      </li> -->
+    </ul>  
+
+    <h3>Add a Stall</h3>
+
+    
+    <form name='stallForm' ng-submit='stallForm.$valid && addStall()' novalidate>
+      
+      <div class='warning-number'>Price must be less than 27</div>
+
+      <label>Name</label>
+      <input type='text' required ng-model="newStall.name" /><br>
+      <label>Price</label>
+      <input type='number' required min='1' max='27' ng-model="newStall.price"/><br>
+      <label>Description</label>
+      <textarea ng-model="newStall.description"></textarea><br>
+      <button>Submit</button>
+    </form>
+  </nav>
+
+  <section id='selected-stall-details' ng-show="selectedStall">
+    <div class='close' ng-click='clearSelectedStall()'>X</div>
+    <h2>Selected Stall Details</h2>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td>{{ selectedStall.name }}</td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>{{ selectedStall.price }}</td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td>{{ selectedStall.description }}</td>
+      </tr>
+    </table>
+  </section>
+
+  <section ng-hide="selectedStall">
+    <h2>Leather Lane</h2>
+    <p>Leather Lane is an awesome market in Clerkenwell that has an amazing variety of lunch time options. Select a stall on the left to see more details</p>
+  </section>
+
+
+
+
+  <!-- <button ng-click='addToBasket()'>Click to add to basket</button>
+
+  <p>Your basket has {{ basket }} items in it</p> -->
+
+</div>
+
+
+
+
+</body>
+</html>

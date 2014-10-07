@@ -1,0 +1,54 @@
+<h1>Angular Leather Lane Market App</h1>
+  
+  <div ng-controller="MarketController as market">  
+    <nav>  
+      <h2>Stalls</h2>  
+      <input ng-model="search" placeholder="search" />  
+      <ul>  
+         <li ng-repeat="stall in stalls | filter : {name: search} | orderBy: 'name'" ng-click="selectStall(stall)" ng-class="{highlighted: stall === selectedStall }">{{ stall.name}}</li> 
+
+         <li class="new_item" ng-show="newStall" ng-click="selectStall(newStall)" ng-class="{highlighted: newStall === selectedStall }">  
+        {{ newStall.name}}</li>  
+      </ul>  
+
+      <h3>Add an item</h3> 
+
+      <div stall-form></div>
+
+    </nav> 
+
+    <section ng-show="selectedStall"> 
+      <div ng-click="clearSelectedStall()">
+        <img src="http://www.sirrahmj.co.uk/close.png" /> 
+      </div>
+
+      <h2>Selected Stall details</h2>   
+      <table>  
+        <tr>   
+          <td>Name:</td>  
+          <td ng-hide='editStall'>{{ selectedStall.name }}</td>
+          <td ng-show='editStall'><input type='text' ng-model='selectedStall.name'></td>   
+        </tr>  
+        <tr>  
+          <td>Price:</td> 
+          <td ng-hide='editStall'>{{ selectedStall.price}}</td> 
+          <td ng-show='editStall'><input type='number' ng-model='selectedStall.price'>  
+        </tr>  
+        <tr>  
+          <td>Description:</td>  
+          <td ng-hide='editStall'> {{ selectedStall.description}}</td>
+          <td ng-show='editStall'><textarea ng-model='selectedStall.description'></textarea>  
+        </tr>  
+      </table>
+
+      <button ng-click='deleteStall(selectedStall)'>Delete</button>
+      <button ng-click='setEditStall(selectedStall)'ng-hide='editStall'>Edit</button>
+      <button ng-show='editStall' ng-click='updateStall(editStall)'>Update</button>
+
+    </section>  
+
+    <section ng-hide="selectedStall"> 
+      <h2 >Leather Lane</h2>  
+      <p>Leather Lane is an awesome market in leather lane that has a wide variety of lunch options.  Select an option from the left to see more details.</p>  
+    </section>  
+  </div>
